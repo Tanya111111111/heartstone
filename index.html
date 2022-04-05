@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.enemy{
+			margin-top: 100px;
+			text-align:center;
+			height: 250px;
+		}
+		.player_img{
+			width:200px;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			background-size: 100% 100%;
+			position: relative;
+			transition: 1s;
+
+		}
+		.enemy_img{
+			width:200px;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			background-size: 100% 100%;
+			position: relative;
+			transition: 1s;
+
+		}
+		.player{
+			text-align: center;
+			height: 250px;
+			margin-top: 150px;
+
+		}
+		.player_property{
+			position: absolute;
+			top:80%;
+
+
+		}
+		.enemy_name{
+			color: white; font-family: Arial;
+		}
+		.player_name{
+			color: white; font-family: Arial
+		}
+	</style>
+</head>
+<body style="background-image: url(images/bg.jpg); background-size: 100% ">
+
+	<div class="enemy">
+		<h1 class="enemy_name"></h1>
+
+		<div class="enemy_img">
+			<h2 class="enemy_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="enemy_damage player_property" style="left: 82%;">0</h2>
+		</div>	
+
+	</div>
+	<button class="btn">attack</button>
+
+	<div class="player">
+		<h1 class="player_name"></h1>
+		
+		<div class="player_img">
+			<h2 class="player_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="player_damage player_property" style="left: 82%;">0</h2>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		let e_h=document.querySelector(".enemy_hp");
+		let e_d=document.querySelector(".enemy_damage");
+		let p_h=document.querySelector(".player_hp");
+		let p_d=document.querySelector(".player_damage");
+		let e_i=document.querySelector(".enemy_img");
+		let p_i=document.querySelector(".player_img");
+		let btn=document.querySelector(".btn");
+		let randomize=function(){
+			let random=Math.random()*100;
+			let round=Math.round(random);
+			return round
+		}
+		let user={
+			url:"url(p1.png)",
+			hp:100,
+			dmg:randomize()
+		}
+		let user2={
+			url:"url(2.png)",
+			hp:100,
+			dmg:randomize()
+		}
+		e_i.style.backgroundImage = user.url;
+		p_i.style.backgroundImage = user2.url;
+		e_h.innerHTML=user.hp;
+		p_h.innerHTML=user2.hp;
+		e_d.innerHTML=user.dmg;
+		p_d.innerHTML=user2.dmg;
+		btn.onclick=function(){
+			user.hp=user.hp-user2.dmg;
+			user2.hp=user2.hp-user.dmg;
+			e_h.innerHTML=user.hp;
+			p_h.innerHTML=user2.hp;
+			if(user.hp<user2.hp){
+				alert("проигрыш 1")
+			}
+			if(user2.hp<user.hp){
+				alert("проигрыш 2")
+			}
+		}
+
+	</script>
+</body>
+</html>
